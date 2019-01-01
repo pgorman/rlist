@@ -5,10 +5,12 @@ Rlist is a simple text filter to format ranged lists in Markdown and plain text 
 
 Ranged lists are common in some domains, like role playing games. For example, roll an eight-sided die to determine magic fruit:
 
+```
 1. Poison apple: save or die
 2–3. Banana: heals 1 hit point
 4–7. Orange: removes any temporary minor adverse condition (-1 penalties)
 8. Golden apple: permanently increases random ability score by one
+```
 
 Unfortunately, none of the markup languages include semantic ranged lists.
 The closest we get is definition lists.
@@ -42,6 +44,18 @@ dl.rlist > dt {
 dl.rlist > dd {
 	margin-left: 4em;
 }
+```
+
+Use Rlist in a command pipeline, like a standard Unix filter.
+
+```
+$  rlist < mytext.md
+```
+
+Commonly, the next stage in the pipeline will be a Markdown processor.
+
+```
+$  rlist < mytext.md | cmark
 ```
 
 By default, Rlist outputs HTML. Use the `-x` flag for LaTeX output, or `-h` to see the help for all flags.
